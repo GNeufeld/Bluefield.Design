@@ -1,4 +1,4 @@
-fa<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -132,14 +132,14 @@ fa<!DOCTYPE html>
 <!-- Header mit Navigation -->
 <header>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html" data-link="/">Home</a></li>
+        <li><a href="portfolio.html" data-link="/portfolio">Portfolio</a></li>
+        <li><a href="about.html" data-link="/about">About</a></li>
+        <li><a href="contact.html" data-link="/contact">Contact</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
 <!-- Hauptcontent -->
 <div class="content-container">
@@ -166,5 +166,30 @@ fa<!DOCTYPE html>
 
 <div id="footer-text">© 2025 Gabriel Neufeld</div>
 
+<script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault(); // normales Laden verhindern
+        const target = this.getAttribute('href');   // Ziel-Datei (z.B. portfolio.html)
+        const cleanURL = this.getAttribute('onclick')?.match(/'\/(.*?)'/)?.[1] || '/';
+  
+        // Seite laden und Inhalt austauschen
+        fetch(target)
+          .then(res => res.text())
+          .then(html => {
+            document.open();
+            document.write(html);
+            document.close();
+            history.pushState(null, '', '/' + cleanURL);
+          });
+      });
+    });
+  
+    // sorgt dafür, dass der Zurück-Button im Browser funktioniert
+    window.addEventListener('popstate', () => {
+      location.reload();
+    });
+  </script>
+  
 </body>
 </html>
