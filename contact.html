@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bluefield.Design | Contact</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
     body {
@@ -19,44 +20,79 @@
     position: relative;
     }
 
-    /* Header */
+    /* Header Anfang*/
+    /* Header Anfang*/
+    /* Header Anfang*/
+
     header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgba(0,0,0,0.7);
-        display: flex;
-        justify-content: center;
-        z-index: 100;
-        padding: 1rem 0;
-    }
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between; /* Logo nach links, Nav nach rechts */
+    align-items: center;            /* vertikal zentrieren */
+    padding: 1rem 0 ;             /* oben/unten 1rem, links/rechts 50px */
+    z-index: 100;
+}
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-        margin: 0;
-        padding: 0;
-    }
+/* Logo links */
+.logo {
+    font-family: 'Moderustic', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0; /* kein extra margin nötig, Abstand kommt vom Header-Padding */
+    margin-left: 50px;
+}
 
-    nav ul li a {
-        text-decoration: none;
-        color: #d9d2e9;
-        font-weight: bold;
-        transition: color 0.3s;
-    }
+/* Navigation rechts */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    margin-right: 50px;
+    padding: 0;
+}
 
-    nav ul li a:hover {
-        color: #ffffff;
-    }
+/* Standard-Link */
+nav ul li a {
+    position: relative;
+    text-decoration: none; /* verhindert Standard-Unterstreichung */
+    color: #ffffff7e;
+    font-weight: bold;
+    transition: color 0.3s;
+}
 
+/* Animierte Linie unter dem Link */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px; /* etwas Abstand unter dem Text */
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Hover-Effekt */
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+nav ul li a:hover::after {
+    width: 100%;   /* volle Breite */
+    left: 0;       /* startet zentriert → wächst nach links & rechts */
+}
 
 /* Container für Bild und Text */
 .content-container {
     width: auto;
     height: 80vh;
-    top: 18vh;
+    top: 21vh;
     background-color: transparent;
     position: relative;
     overflow: hidden;
@@ -208,14 +244,35 @@
             }
         }
 
-        a {
-            color: #d9d2e9;
-            text-decoration: none;
-        }
+        .text_placeholder a {
+    position: relative;
+    color: #d9d2e9;
+    text-decoration: none; /* Standard-Unterstreichung weg */
+    font-weight: bold;
+    transition: color 0.3s;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+/* animierte Linie */
+.text_placeholder a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px; /* kleiner Abstand unter der Schrift */
+    width: 0;
+    height: 2px;
+    background-color: #d9d2e9; /* gleiche Farbe wie der Text */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Hover */
+.text_placeholder a:hover {
+    color: #ffffff; /* optional heller beim Hover */
+}
+
+.text_placeholder a:hover::after {
+    width: 100%;
+    left: 0;
+}
 
         /* Responsivitätsregeln */
 
@@ -295,8 +352,10 @@
     }
 }
 
-    /* Footer */
-        /* Fußzeile */
+    /* Footer Anfang*/
+    /* Footer Anfang*/
+    /* Footer Anfang*/
+
         #footer {
             position: absolute;
             bottom: 0vh;
@@ -429,12 +488,22 @@
 
         }
 
+    /* Footer Ende*/
+    /* Footer Ende*/
+    /* Footer Ende*/
+
 </style>
 </head>
 <body>
 
 <!-- Header mit Navigation -->
 <header>
+    <div class="logo spaced-logo">BLUEFIELD DESIGN</div>
+    <style>
+        .spaced-logo {
+            letter-spacing: 2px; /* Erhöht den Buchstabenabstand */
+        }
+    </style>
     <nav>
       <ul>
         <li><a href="index.html" data-link="/Bluefield.Design/">Home</a></li>
@@ -487,6 +556,7 @@
     </div>
 
 <!-- Footer -->
+
 <div id="footer"></div>
 <div class="footer-button-container">
     <a href="https://www.behance.net/gabrielneufeld1" target="_blank">
