@@ -261,13 +261,13 @@
     // Menü schließen bei Linkklick (mobil)
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        if (window.matchMedia('(max-width: 480px)').matches) setMenu(false);
+        if (window.matchMedia('(max-width: 720px)').matches) setMenu(false);
       });
     });
 
     // Menü schließen bei Klick außerhalb (mobil)
     document.addEventListener('click', (e) => {
-      if (window.matchMedia('(max-width: 480px)').matches) {
+      if (window.matchMedia('(max-width: 720px)').matches) {
         if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
       }
     });
