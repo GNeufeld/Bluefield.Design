@@ -3,127 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bluefield.Design | About</title>
+<title>Bluefield.Design | Contact</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
     body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: #4d4189;
-        color: #d9d2e9;
-        overflow-x: hidden;
+    height: 120vh;
+    width: 100vw;
+    background-color: #4d4189;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
     }
 
-    /* Header */
+    /* Header Anfang*/
+    /* Header Anfang*/
+    /* Header Anfang*/
+
     header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgba(0,0,0,0.7);
-        display: flex;
-        justify-content: center;
-        z-index: 100;
-        padding: 1rem 0;
-    }
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between; /* Logo nach links, Nav nach rechts */
+    align-items: center;            /* vertikal zentrieren */
+    padding: 1rem 0 ;             /* oben/unten 1rem, links/rechts 50px */
+    z-index: 100;
+}
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-        margin: 0;
-        padding: 0;
-    }
+/* Logo links */
+.logo {
+    font-family: 'Moderustic', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0; /* kein extra margin nötig, Abstand kommt vom Header-Padding */
+    margin-left: 50px;
+}
 
-    nav ul li a {
-        text-decoration: none;
-        color: #d9d2e9;
-        font-weight: bold;
-        transition: color 0.3s;
-    }
+/* Navigation rechts */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    margin-right: 50px;
+    padding: 0;
+}
 
-    nav ul li a:hover {
-        color: #ffffff;
-    }
+/* Standard-Link */
+nav ul li a {
+    position: relative;
+    text-decoration: none; /* verhindert Standard-Unterstreichung */
+    color: #ffffff7e;
+    font-weight: bold;
+    transition: color 0.3s;
+}
 
-    /* Content */
-    .content-container {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding-top: 6rem; /* Platz für Header */
-    }
+/* Animierte Linie unter dem Link */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px; /* etwas Abstand unter dem Text */
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
 
-    .content-container h1 {
-        font-size: 3rem;
-        margin: 0.5rem 0;
-    }
+/* Hover-Effekt */
+nav ul li a:hover {
+    color: #ffffff;
+}
 
-    .content-container p {
-        font-size: 1.5rem;
-        margin: 0.5rem 0;
-    }
+nav ul li a:hover::after {
+    width: 100%;   /* volle Breite */
+    left: 0;       /* startet zentriert → wächst nach links & rechts */
+}
 
-    /* Footer */
-    #footer {
-        position: relative;
-        width: 100%;
-        height: 21.5vh;
-        background-color: black;
-        margin-top: 2rem;
-    }
+    /* Header Ende*/
+    /* Header Ende*/
+    /* Header Ende*/
 
-    .footer-button-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 360px;
-        position: absolute;
-        bottom: 9vh;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    /* Footer Anfang*/
+    /* Footer Anfang*/
+    /* Footer Anfang*/
 
-    .footer-button {
-        width: 80px;
-        height: 80px;
-        background-color: #000000;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        background-size: cover;
-    }
+        #footer {
+            position: absolute;
+            bottom: 0vh;
+            left: 0;
+            width: 100vw;
+            height: 21.5vh;
+            background-color: black;
+        }
 
-    .footer-button:hover {
-        transform: scale(1.1);
-    }
+        /* Fußzeilen Container für alle Buttons */
+        .footer-button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 360px;
+            position: absolute;
+            bottom: 9vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    #footer-text {
-        position: absolute;
-        bottom: 1.9vh;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 13.25px;
-        text-align: center;
-        color: white;
-    }
+        /* Fußzeile-Buttons */
+        .footer-button {
+            width: 80px;
+            height: 80px;
+            background-color: #000000;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-size: cover;
+        }
 
-    /* Responsive */
-    @media(max-width:768px) {
+        /* Hover-Effekt für Buttons */
+        .footer-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer-Text */
+        #footer-text {
+            position: absolute;
+            bottom: 1.9vh;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-size: 13.25px;
+            text-align: center;
+        }
+
+        .transparency-block-top {
+            position: absolute;
+            top: 0;
+            right: 0; /* Block links */
+            width: 100%; /* Breite des Blocks */
+            height: 1vh; /* Höhe des Blocks */
+            background: linear-gradient(to bottom, #00000050 0%, #00000000 100%); /* Verlauf von 100% zu 0% Transparenz in Hex */
+            z-index: 2; /* Höherer Z-Index als der Text */
+        }
+
+        .transparency-block-bottom {
+            position: absolute;
+            bottom: 21.5vh;
+            right: 0; /* Block links */
+            width: 100%; /* Breite des Blocks */
+            height: 1vh; /* Höhe des Blocks */
+            background: linear-gradient(to top, #00000050 0%, #00000000 100%); /* Verlauf von 100% zu 0% Transparenz in Hex */
+            z-index: 2; /* Höherer Z-Index als der Text */
+        }
+
+        @media (max-width: 1600px) {
+
         .footer-button {
             width: 60px;
             height: 60px;
+            }
+
         }
-        nav ul {
-            gap: 1rem;
+
+        @media (max-width: 768px) {
+    
+        .footer-button {
+            width: 80px;
+            height: 80px;
+            }
+
         }
-    }
+
+        @media (max-width: 480px) {
+
+        .footer-button {
+            width: 50px;
+            height: 50px;
+            }
+
+        }        
+
+        @media (max-width: 360px) {
+    
+        .footer-button-container {
+            max-width: 290px;
+            bottom: 10.5vh;
+            }
+
+        }  
+
+        @media (max-height: 480px) {
+
+        body {
+            height: 135vh;
+            }  
+
+        #footer {
+            position: absolute;
+            bottom: 0vh;
+            left: 0;
+            width: 100vw;
+            height: 35vh;
+            }
+            
+        .footer-button {
+            width: 45px;
+            height: 45px;
+            }
+   
+        .footer-button-container {
+            max-width: 200px;
+            bottom: 18vh;
+            }
+
+        }
+
+    /* Footer Ende*/
+    /* Footer Ende*/
+    /* Footer Ende*/
 
 </style>
 </head>
@@ -131,6 +238,12 @@
 
 <!-- Header mit Navigation -->
 <header>
+    <div class="logo spaced-logo">BLUEFIELD DESIGN</div>
+    <style>
+        .spaced-logo {
+            letter-spacing: 2px; /* Erhöht den Buchstabenabstand */
+        }
+    </style>
     <nav>
       <ul>
         <li><a href="index.html" data-link="/Bluefield.Design/">Home</a></li>
@@ -141,14 +254,8 @@
     </nav>
   </header>
 
-<!-- Hauptcontent -->
-<div class="content-container">
-    <h1>Gabriel Neufeld</h1>
-    <p>B.A. Industrial Designer</p>
-    <p>Willkommen auf meiner Portfolio-Seite!</p>
-</div>
-
 <!-- Footer -->
+
 <div id="footer"></div>
 <div class="footer-button-container">
     <a href="https://www.behance.net/gabrielneufeld1" target="_blank">
@@ -164,7 +271,16 @@
     </a>
 </div>
 
-<div id="footer-text">© 2025 Gabriel Neufeld</div>
+<!-- Footer-Text -->
+<div id="footer-text">
+    © 2025 Gabriel Neufeld
+</div>
+
+<!-- Blauer Block auf der linken Seite -->
+<div class="transparency-block-top "></div>
+
+    <!-- Blauer Block auf der linken Seite -->
+    <div class="transparency-block-bottom "></div>
 
 <script>
     document.querySelectorAll('nav a').forEach(link => {
@@ -189,7 +305,7 @@
     window.addEventListener('popstate', () => {
       location.reload();
     });
-  </script>
-  
+</script>
+    
 </body>
 </html>
