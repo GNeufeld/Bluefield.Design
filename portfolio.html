@@ -26,7 +26,7 @@
   header {
     width: 100%;
     position: fixed;
-    top: 0; left: 0;
+    inset: 0 auto auto 0; /* top:0; left:0 */
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -39,7 +39,6 @@
     font-size: 1rem;
     font-weight: 400;
     color: #fff;
-    letter-spacing: 2px;
   }
 
   /* Navigation */
@@ -70,18 +69,9 @@
   nav ul li a:hover { color: #fff; }
   nav ul li a:hover::after { width: 100%; left: 0; }
 
-  /* Aktiver Menüpunkt */
-  nav ul li a.active {
-    color: #fff;        /* voll weiß */
-    font-weight: bold;  /* extra Betonung */
-  }
-  nav ul li a.active::after {
-    display: none;      /* kein Unterstrich */
-  }
-
   /* Burger-Button */
   .burger {
-    display: none;
+    display: none; /* nur mobil sichtbar */
     flex-direction: column;
     justify-content: space-between;
     width: 24px;
@@ -92,6 +82,7 @@
     border: 0;
     padding: 0;
   }
+  .burger:focus { outline: 2px solid #fff; outline-offset: 4px; }
   .burger span {
     display: block;
     height: 3px;
@@ -100,8 +91,6 @@
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-
-  /* Transparenz Block */
   .transparency-block-top {
     position: fixed;
     top: 50px;
@@ -110,7 +99,6 @@
     background: linear-gradient(to bottom, #00000050 0%, #00000000 100%);
     z-index: 2;
   }
-
   /* Mobile Navigation */
   @media (max-width: 720px) {
     nav {
@@ -178,6 +166,7 @@
     font-size: 13.25px;
     text-align: center;
   }
+
   .transparency-block-bottom {
     position: absolute;
     bottom: 200px;
@@ -187,28 +176,68 @@
     background: linear-gradient(to top, #00000050 0%, #00000000 100%);
     z-index: 2;
   }
+  @media (max-width: 1600px) {
+    .footer-button { width: 60px; height: 60px; }
+  }
+  @media (max-width: 768px) {
+    .footer { height: 21.5vh }
+    .footer-button { width: 80px; height: 80px; }
+  }
+  @media (max-width: 480px) {
+    .footer-button { width: 60px; height: 60px; }
+    .footer-button-container { max-width: 300px; bottom: 10.5vh; }
+  }
+  @media (max-height: 480px) {
+    body { height: 135vh; }
+    #footer { height: 35vh; }
+    .footer-button { width: 45px; height: 45px; }
+    .footer-button-container { max-width: 200px; bottom: 18vh; }
+  }
 </style>
 </head>
 
 <body>
   <!-- Header -->
   <header>
-    <div class="logo">BLUEFIELD DESIGN</div>
+    <div class="logo spaced-logo">BLUEFIELD DESIGN</div>
+    <style>
+        .spaced-logo {
+            letter-spacing: 2px; /* Erhöht den Buchstabenabstand */
+        }
+    </style>
     <!-- Burger Icon -->
-    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<style>
+  .burger:focus {
+    outline: none; /* Quadrat entfernt */
+  }
+</style>
+
     <nav id="nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" data-link="/Bluefield.Design/">Home</a></li>
+        <li><a href="portfolio.html" data-link="/Bluefield.Design/portfolio">Portfolio</a></li>
+        <li><a href="about.html" data-link="/Bluefield.Design/about">About</a></li>
+        <li><a href="contact.html" data-link="/Bluefield.Design/contact">Contact</a></li>
       </ul>
     </nav>
-  </header>
+
+<style>
+  /* Aktiver Menüpunkt */
+  nav ul li a.active {
+    color: #fff; /* 100 % weiß */
+  }
+  nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+  }
+</style>
+</header>
 
   <!-- Footer -->
   <div id="footer"></div>
@@ -223,6 +252,7 @@
       <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/864ee7209122293.66fca748b6fa0.png');"></button>
     </a>
   </div>
+
   <div id="footer-text">© 2025 Gabriel Neufeld</div>
   <div class="transparency-block-top"></div>
   <div class="transparency-block-bottom"></div>
@@ -251,6 +281,24 @@
     });
   });
 
+  // Menü schließen bei Klick außerhalb (mobil)
+  document.addEventListener('click', (e) => {
+    if (window.matchMedia('(max-width: 720px)').matches) {
+      if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
+    }
+  });
+
+  // Navigation Links normal weiterleiten (keine document.write)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function (event) {
+      // keine SPA mehr, einfach normale Navigation
+      window.location.href = this.getAttribute('href');
+    });
+  });
+</script>
+
+
+<script>
   // Aktiven Menüpunkt markieren
   document.addEventListener("DOMContentLoaded", () => {
     const currentPath = window.location.pathname.split("/").pop(); 
@@ -289,6 +337,6 @@
       location.reload();
     });
   </script>
-
+  
 </body>
 </html>
