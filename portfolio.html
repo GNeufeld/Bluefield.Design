@@ -195,6 +195,7 @@
   }
 </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -236,7 +237,7 @@
     left: 0;
   }
 </style>
-  </header>
+</header>
 
   <!-- Footer -->
   <div id="footer"></div>
@@ -296,6 +297,7 @@
   });
 </script>
 
+
 <script>
   // Aktiven Menüpunkt markieren
   document.addEventListener("DOMContentLoaded", () => {
@@ -314,7 +316,19 @@
 <script>
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function (event) {
-
+        event.preventDefault(); // Verhindert normales Laden
+        const target = this.getAttribute('href');
+        const cleanURL = this.getAttribute('data-link');
+        
+        // Seite laden
+        fetch(target)
+          .then(res => res.text())
+          .then(html => {
+            document.open();
+            document.write(html);
+            document.close();
+            history.pushState(null, '', cleanURL);
+          });
       });
     });
   
