@@ -205,11 +205,17 @@
         }
     </style>
     <!-- Burger Icon -->
-    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<style>
+  .burger:focus {
+    outline: none; /* Quadrat entfernt */
+  }
+</style>
 
     <nav id="nav">
       <ul>
@@ -240,42 +246,68 @@
   <div class="transparency-block-bottom"></div>
 
   <!-- Scripts -->
-  <script>
-    // Burger-Menü Logik
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('nav');
+<script>
+  // Burger-Menü Logik
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
 
-    function setMenu(open) {
-      burger.classList.toggle('open', open);
-      nav.classList.toggle('open', open);
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  function setMenu(open) {
+    burger.classList.toggle('open', open);
+    nav.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  burger.addEventListener('click', () => {
+    const willOpen = !burger.classList.contains('open');
+    setMenu(willOpen);
+  });
+
+  // Menü schließen bei Linkklick (mobil)
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.matchMedia('(max-width: 720px)').matches) setMenu(false);
+    });
+  });
+
+  // Menü schließen bei Klick außerhalb (mobil)
+  document.addEventListener('click', (e) => {
+    if (window.matchMedia('(max-width: 720px)').matches) {
+      if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
     }
+  });
 
-    burger.addEventListener('click', () => {
-      const willOpen = !burger.classList.contains('open');
-      setMenu(willOpen);
+  // Navigation Links normal weiterleiten (keine document.write)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function (event) {
+      // keine SPA mehr, einfach normale Navigation
+      window.location.href = this.getAttribute('href');
     });
-
-    // Menü schließen bei Linkklick (mobil)
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (window.matchMedia('(max-width: 720px)').matches) setMenu(false);
-      });
-    });
-
-    // Menü schließen bei Klick außerhalb (mobil)
-    document.addEventListener('click', (e) => {
-      if (window.matchMedia('(max-width: 720px)').matches) {
-        if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
-      }
-    });
+  });
 </script>
 
 
 <script>
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function (event) {
+        event.preventDefault(); // Verhindert normales Laden
+        const target = this.getAttribute('href');
+        const cleanURL = this.getAttribute('data-link');
+        
+        // Seite laden
+        fetch(target)
+          .then(res => res.text())
+          .then(html => {
+            document.open();
+            document.write(html);
+            document.close();
+            history.pushState(null, '', cleanURL);
+          });
       });
+    });
+  
+    // sorgt dafür, dass Zurück-Button funktioniert
+    window.addEventListener('popstate', () => {
+      location.reload();
     });
   </script>
   
