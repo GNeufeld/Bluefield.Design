@@ -91,14 +91,7 @@
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .transparency-block-top {
-    position: fixed;
-    top: 50px;
-    width: 100%;
-    height: 1vh;
-    background: linear-gradient(to bottom, #00000050 0%, #00000000 100%);
-    z-index: 2;
-  }
+
   /* Mobile Navigation */
   @media (max-width: 720px) {
     nav {
@@ -132,7 +125,7 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 200px;
+    height: 21.5vh;
     background-color: #000;
   }
   .footer-button-container {
@@ -166,10 +159,18 @@
     font-size: 13.25px;
     text-align: center;
   }
-
+  .transparency-block-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 1vh;
+    background: linear-gradient(to bottom, #00000050 0%, #00000000 100%);
+    z-index: 2;
+  }
   .transparency-block-bottom {
     position: absolute;
-    bottom: 200px;
+    bottom: 21.5vh;
     right: 0;
     width: 100%;
     height: 1vh;
@@ -180,12 +181,13 @@
     .footer-button { width: 60px; height: 60px; }
   }
   @media (max-width: 768px) {
-    .footer { height: 21.5vh }
     .footer-button { width: 80px; height: 80px; }
   }
   @media (max-width: 480px) {
-    .footer-button { width: 60px; height: 60px; }
-    .footer-button-container { max-width: 300px; bottom: 10.5vh; }
+    .footer-button { width: 50px; height: 50px; }
+  }
+  @media (max-width: 360px) {
+    .footer-button-container { max-width: 290px; bottom: 10.5vh; }
   }
   @media (max-height: 480px) {
     body { height: 135vh; }
@@ -195,7 +197,6 @@
   }
 </style>
 </head>
-
 <body>
   <!-- Header -->
   <header>
@@ -206,17 +207,11 @@
         }
     </style>
     <!-- Burger Icon -->
-<button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-
-<style>
-  .burger:focus {
-    outline: none; /* Quadrat entfernt */
-  }
-</style>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav id="nav">
       <ul>
@@ -226,18 +221,7 @@
         <li><a href="contact.html" data-link="/Bluefield.Design/contact">Contact</a></li>
       </ul>
     </nav>
-
-<style>
-  /* Aktiver Menüpunkt */
-  nav ul li a.active {
-    color: #fff; /* 100 % weiß */
-  }
-  nav ul li a.active::after {
-    width: 100%;
-    left: 0;
-  }
-</style>
-</header>
+  </header>
 
   <!-- Footer -->
   <div id="footer"></div>
@@ -258,60 +242,37 @@
   <div class="transparency-block-bottom"></div>
 
   <!-- Scripts -->
-<script>
-  // Burger-Menü Logik
-  const burger = document.getElementById('burger');
-  const nav = document.getElementById('nav');
+  <script>
+    // Burger-Menü Logik
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
 
-  function setMenu(open) {
-    burger.classList.toggle('open', open);
-    nav.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  burger.addEventListener('click', () => {
-    const willOpen = !burger.classList.contains('open');
-    setMenu(willOpen);
-  });
-
-  // Menü schließen bei Linkklick (mobil)
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (window.matchMedia('(max-width: 720px)').matches) setMenu(false);
-    });
-  });
-
-  // Menü schließen bei Klick außerhalb (mobil)
-  document.addEventListener('click', (e) => {
-    if (window.matchMedia('(max-width: 720px)').matches) {
-      if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
+    function setMenu(open) {
+      burger.classList.toggle('open', open);
+      nav.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
-  });
 
-  // Navigation Links normal weiterleiten (keine document.write)
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (event) {
-      // keine SPA mehr, einfach normale Navigation
-      window.location.href = this.getAttribute('href');
+    burger.addEventListener('click', () => {
+      const willOpen = !burger.classList.contains('open');
+      setMenu(willOpen);
     });
-  });
-</script>
 
+    // Menü schließen bei Linkklick (mobil)
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.matchMedia('(max-width: 720px)').matches) setMenu(false);
+      });
+    });
 
-<script>
-  // Aktiven Menüpunkt markieren
-  document.addEventListener("DOMContentLoaded", () => {
-    const currentPath = window.location.pathname.split("/").pop(); 
-    const links = document.querySelectorAll("nav a");
-
-    links.forEach(link => {
-      const href = link.getAttribute("href");
-      if (href === currentPath || (href === "index.html" && currentPath === "")) {
-        link.classList.add("active");
+    // Menü schließen bei Klick außerhalb (mobil)
+    document.addEventListener('click', (e) => {
+    if (window.matchMedia('(max-width: 720px)').matches) {
+    if (!nav.contains(e.target) && !burger.contains(e.target)) setMenu(false);
       }
     });
-  });
 </script>
+
 
 <script>
     document.querySelectorAll('nav a').forEach(link => {
