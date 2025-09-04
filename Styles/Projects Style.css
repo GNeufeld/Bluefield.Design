@@ -1,0 +1,143 @@
+:root{
+  --gap: 40px;             /* Abstand zwischen Buttons */
+  --card-height: 400px;    /* Höhe der Buttons - anpassen falls gewuenscht */
+  --radius: 12px;
+  --accent: rgba(255,255,255,0.92);
+}
+
+/* Grundlayout - container hat 250px oben/unten und 10vw links/rechts */
+.page-container {
+  margin: 100px 10vw;
+}
+
+/* Grid mit 3 in einer Zeile und 40px Abstand */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+
+/* Basisstyles fuer jeden "Button" (als Link) */
+.card {
+  display: block;
+  position: relative;
+  height: var(--card-height);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(30px); /* Anfangs leicht nach unten verschoben */
+  opacity: 0;                  /* und unsichtbar - wird per Animation sichtbar */
+  will-change: transform, opacity;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: box-shadow 220ms ease;
+  cursor: pointer;             /* Mauscursor wird Pointer bei Hover */
+}
+
+/* Bild innerhalb des Buttons - füllt den Bereich */
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1s cubic-bezier(.2,.9,.3,1), filter 400ms ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Overlay, das Text und Abdunkelung zeigt */
+.card__overlay {
+  position: absolute;
+  inset: 0; /* top/right/bottom/left = 0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0); /* initial transparent */
+  opacity: 0;                /* unsichtbar */
+  pointer-events: none;      /* keine Mausinteraktion mit dem Overlay selbst */
+  transition: background 300ms ease, opacity 300ms ease;
+}
+
+/* Text im Overlay - unsichtbar und leicht verschoben, wird eingeblendet */
+.card__title {
+  margin: 0;
+  padding: 0 16px;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+  text-align: center;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+}
+
+/* Hover / Fokus: Bild dunkler, leicht skaliert; Overlay und Text sichtbar */
+.card:hover .card__img,
+.card:focus-visible .card__img {
+  filter: brightness(0.48);
+  transform: scale(1.03);
+}
+
+.card:hover .card__overlay,
+.card:focus-visible .card__overlay {
+  background: rgba(0,0,0,0.36);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card:hover .card__title,
+.card:focus-visible .card__title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* kleiner Hover-Effekt auf Card selbst */
+.card:hover,
+.card:focus-visible {
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+  outline: none;
+}
+
+/* Tastaturfokus gut sichtbar machen */
+.card:focus-visible {
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 14px 34px rgba(0,0,0,0.18);
+}
+
+/* Animation beim Laden - Buttons kommen von unten nach oben */
+@keyframes riseUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Staggered animation delays fuer die 6 Buttons */
+.button-grid .card {
+  animation-name: riseUp;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(.2,.9,.3,1);
+  animation-fill-mode: forwards;
+  /* default delay faellt auf 0 wenn nicht ueberschrieben */
+}
+
+.button-grid .card:nth-child(1){ animation-delay: 0.06s; }
+.button-grid .card:nth-child(2){ animation-delay: 0.12s; }
+.button-grid .card:nth-child(3){ animation-delay: 0.18s; }
+.button-grid .card:nth-child(4){ animation-delay: 0.24s; }
+.button-grid .card:nth-child(5){ animation-delay: 0.30s; }
+.button-grid .card:nth-child(6){ animation-delay: 0.36s; }
+
+/* Responsive: 2 Spalten bei kleineren Bildschirmen, 1 Spalte auf Handy */
+@media (max-width: 1000px) {
+  .button-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .page-container { margin: 120px 6vw; } /* weniger Marge auf sehr kleinen Screens */
+  .button-grid { grid-template-columns: 1fr; }
+  .card { height: 200px; }
+}
