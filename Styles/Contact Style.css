@@ -1,0 +1,263 @@
+/* Container für Bild und Text */
+.content-container {
+    width: auto;
+    height: 80vh;
+    top: 21vh;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    display: auto;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column; /* Stellt sicher, dass der Text oben und unten ist */
+}
+
+/* Image_placeholder (Hintergrundbild) */
+.image_placeholder {
+    width: 38.75vw;
+    height: 62.5vh;
+    background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/943a3b209122293.67c970d56124f.png');
+    background-size: cover;
+    background-position: top left;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: opacity 5s ease;
+}
+
+@keyframes moveLeft {
+    from {
+        left: -50vw;
+    }
+    to {
+        left: 10vw;
+    }
+}
+
+.content-container.animate .image_placeholder {
+    opacity: 1;
+    animation: moveLeft 2.5s ease forwards;
+}
+.line {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Erster Textbereich */
+.headline-container {
+    color: #d9d2e900;
+    text-align: left;
+    font-size: 5em;
+    font-weight: bold;
+    max-width: auto;
+    margin-left: 51.5vw;
+    top: 0vh;
+    left: 0%;
+    z-index: 2;
+}
+
+.mobile {
+    display: none;
+}
+
+.headline-container.animate .line1 {
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* Jede Zeile bekommt eine Verzögerung */
+.headline-container.animate .line1:nth-child(1) {
+    animation-delay: 2.5s;
+}
+
+.headline-container.animate .line1:nth-child(2) {
+    animation-delay: 2.525s;
+}
+
+.headline-container.animate .line1:nth-child(3) {
+    animation-delay: 2.55s;
+}
+
+/* Fade-in Animation von unten nach oben */
+@keyframes fadeInUp {
+    from {
+        color: #d9d2e900;
+        transform: translateX(30px);
+    }
+    to {
+        color: #d9d2e9;
+        transform: translateX(0);
+    }
+}
+
+/* Zweiter Textbereich (unter dem Block) */
+.text_placeholder {
+    color: #d9d2e9;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: auto;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.8;
+    margin-left: 51.5vw;
+    position: absolute;
+    bottom: 17.5vh; /* Positionierung von unten */
+    left: 0%;
+    z-index: 1;
+}
+
+.content-container.animate .line {
+    animation: fadeInRight 1s ease-out forwards;
+}
+
+.content-container.animate .line:nth-child(1) {
+    animation-delay: 3.5s;
+}
+
+.content-container.animate .line:nth-child(2) {
+    animation-delay: 4.5s;
+}
+
+.content-container.animate .line:nth-child(3) {
+    animation-delay: 4.5s;
+}
+
+.content-container.animate .line:nth-child(4) {
+    animation-delay: 5.5s;
+}
+.content-container.animate .line:nth-child(5) {
+    animation-delay: 6.5s;
+}
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .text_placeholder a {
+    position: relative;
+    color: #d9d2e9;
+    text-decoration: none; /* Standard-Unterstreichung weg */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* animierte Linie */
+.text_placeholder a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px; /* kleiner Abstand unter der Schrift */
+    width: 0;
+    height: 2px;
+    background-color: #d9d2e9; /* gleiche Farbe wie der Text */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* Hover */
+.text_placeholder a:hover {
+    color: #ffffff; /* optional heller beim Hover */
+}
+
+.text_placeholder a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+        /* Responsivitätsregeln */
+
+@media (max-width: 1600px) {
+    
+    .headline-container {
+        font-size: 3em;
+    }
+
+    .text_placeholder {
+        font-size: 18px;
+    }
+
+}
+
+@media (max-width: 820px) {
+    
+    .content-container {
+        flex-direction: column;
+        height: 100vh;
+        top: 3vh;
+        align-items: flex-start;
+    }
+    
+    .headline-container {
+        text-align: center;
+        font-size: 2.25em;
+        margin-left: auto;
+        left: auto;
+    }
+
+    .desktop {
+        display: none;    
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .image_placeholder {
+        width: 85vw;
+        height: 50vh;
+        position: relative;
+        margin-left: -3.25vw;
+        top: 3vh;
+    }
+
+    .text_placeholder {
+        font-size: 18px;
+        margin-left: 6.75vw;
+        bottom: 9vh;
+        line-height: 1.5;
+  
+    }
+
+}
+
+@media (max-width: 480px) {
+   
+    .headlinet-container {
+        font-size: 1.5em;
+    }
+    .text_placeholder {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-height: 480px) {
+
+    .headline-container {
+        font-size: 1.6em;
+    }
+    .text_placeholder {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+}

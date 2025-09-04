@@ -37,6 +37,7 @@
       </ul>
     </nav>
   </header>
+  <div class="transparency-block-top"></div>
 
   <!-- Footer -->
   <div id="footer"></div>
@@ -52,7 +53,6 @@
     </a>
   </div>
   <div id="footer-text">© 2025 Gabriel Neufeld</div>
-  <div class="transparency-block-top"></div>
   <div class="transparency-block-bottom"></div>
 
   <!-- Scripts -->
@@ -90,35 +90,43 @@
       }
     });
     
-  // URL und Links ohne .html darstellen
+    // Einziger DOMContentLoaded-Block: URL bereinigen, Links umschreiben, aktiven Menüpunkt setzen
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Saubere URL in Adressleiste anzeigen
-      if (window.location.pathname.endsWith(".html")) {
-        const cleanPath = window.location.pathname.replace(/about\.html$/, "")
-                                                 .replace(/\.html$/, "");
-        window.history.replaceState({}, "", cleanPath);
+      // Helper zum Normalisieren von Pfaden
+      const normalize = (path) => path
+        .replace(/about\.html$/i, "")
+        .replace(/\.html$/i, "")
+        .replace(/\/+$/,""); // Schluss-Slash entfernen
+
+      // 1) Saubere URL in der Adressleiste anzeigen
+      if (window.location.pathname.match(/\.html$/i)) {
+        const cleanPath = normalize(window.location.pathname);
+        // Für Home wieder den trailing slash dranhängen
+        const finalPath = cleanPath === "" ? "/" : cleanPath;
+        window.history.replaceState({}, "", finalPath);
       }
 
-      // 2. Links im Menü anpassen
+      // 2) Links im Menü auf saubere URLs setzen
       document.querySelectorAll("nav a").forEach(link => {
-        let href = link.getAttribute("href");
-        if (href.endsWith(".html")) {
-          href = href.replace(/about\.html$/, "")
-                     .replace(/\.html$/, "");
-          link.setAttribute("href", href);
-        }
+        // Bevorzugt data-link verwenden, sonst href bereinigen
+        const target = link.dataset.link || link.getAttribute("href");
+        let clean = normalize(target);
+        // Home-Link als Slash
+        if (clean === "") clean = "/";
+        link.setAttribute("href", clean);
       });
 
-      // 3. Aktiven Menüpunkt markieren
-      const currentPath = window.location.pathname.replace(/\/$/, "");
+      // 3) Aktiven Menüpunkt markieren - robust gegen .html, Slash und data-link
+      const current = normalize(window.location.pathname);
       document.querySelectorAll("nav a").forEach(link => {
-        const href = link.getAttribute("href").replace(/\/$/, "");
-        if (href === currentPath) {
+        const candidateRaw = link.dataset.link || link.getAttribute("href");
+        const candidate = normalize(candidateRaw);
+        if (candidate === current || (candidate === "" && current === "")) {
           link.classList.add("active");
         }
       });
     });
   </script>
-  
+
 </body>
 </html>
