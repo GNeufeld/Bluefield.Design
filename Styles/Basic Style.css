@@ -177,9 +177,9 @@ nav ul li a.active::after { display: none; }
   .footer-button { width: 60px; height: 60px; }
 }
 @media (max-width: 768px) {
-  .footer { height: 21.5vh }
+  .footer { height: 150px; }
   .footer-button { width: 80px; height: 80px; }
-  .transparency-block-bottom { height: 21.5vh }
+  .transparency-block-bottom { bottom: 150px; }
 }
 @media (max-width: 480px) {
   .footer-button { width: 60px; height: 60px; }
