@@ -179,6 +179,7 @@ nav ul li a.active::after { display: none; }
 @media (max-width: 768px) {
   .footer { height: 21.5vh }
   .footer-button { width: 80px; height: 80px; }
+  .transparency-block-bottom { bottom: 21.5vh }
 }
 @media (max-width: 480px) {
   .footer-button { width: 60px; height: 60px; }
