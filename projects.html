@@ -89,19 +89,6 @@
         }
       }
     });
-
-    // Aktiven Menüpunkt markieren
-    document.addEventListener("DOMContentLoaded", () => {
-      const currentPath = window.location.pathname.split("/").pop();
-      const links = document.querySelectorAll("nav a");
-
-      links.forEach(link => {
-        const href = link.getAttribute("href");
-        if (href === currentPath || (href === "projects.html" && currentPath === "")) {
-          link.classList.add("active");
-        }
-      });
-    });
     
   // URL und Links ohne .html darstellen
     document.addEventListener("DOMContentLoaded", () => {
