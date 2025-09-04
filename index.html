@@ -14,6 +14,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="Styles/Basic Style.css">
+  <link rel="stylesheet" href="Styles/Index Style.css">
 </head>
 
 <body>
@@ -38,6 +39,55 @@
     </nav>
   </header>
   <div class="transparency-block-top"></div>
+
+  <!-- Hauptcontent -->
+    <div class="slider-container">
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/be0818209122293.67d49af6d1fa4.png" alt="Platzhalter 1">
+            <div class="caption">Produktenwicklung & Designprozess</div>
+        </div>
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/source/60c989209122293.67d498180c9b9.png" alt="Platzhalter 2">
+            <div class="caption">Symbolik, Charakter & Materialität</div>
+        </div>
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/50d23b209122293.67d489889326f.png"alt="Platzhalter 3">
+            <div class="caption">Modellbau</div>
+        </div>
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/cb6bae209122293.67d4a9f85519f.png" alt="Platzhalter 4">
+            <div class="caption">Produktdesign & Visualisierung</div>
+        </div>
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/0a46e1209122293.67d4a4bd02471.png" alt="Platzhalter 5">
+            <div class="caption">3D-Visualisierung</div>
+        </div>
+        <div class="slider-item">
+            <div class="overlay"></div>
+            <img src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/d39cb8209122293.67d4a9f8558a5.png" alt="Platzhalter 6">
+            <div class="caption">UX & UI Design</div>
+        </div>
+    </div>
+    
+    <div class="text">
+        <span class="industrial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Industrial Design •</span> Visual Communication
+    </div>
+
+  
+  <!-- Animierter Text2 -->
+<div class="container">
+  <div class="text2">
+    <span class="light">&nbsp;&nbsp;&nbsp;Hi, I'm </span>
+    <span class="normal">Gabriel.</span>
+ </div>
+  <div class="transparency-block-left"></div>
+</div>
+
 
   <!-- Footer -->
   <div id="footer"></div>
@@ -126,6 +176,43 @@
         }
       });
     });
+  </script>
+
+  <script>
+
+const sliderItems = document.querySelectorAll('.slider-item img');
+const moveFactor = 4;
+let targetPositions = new Map();
+
+sliderItems.forEach(img => targetPositions.set(img, 0));
+
+document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+
+    sliderItems.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const imgCenterX = rect.left + rect.width / 2;
+        const deltaX = (mouseX - imgCenterX) / rect.width;
+        const moveX = deltaX * moveFactor;
+
+        targetPositions.set(img, moveX);
+    });
+});
+
+function animate() {
+    sliderItems.forEach(img => {
+        const currentX = parseFloat(img.dataset.currentX) || 0;
+        const targetX = targetPositions.get(img);
+        const newX = currentX + (targetX - currentX) * 0.09; // Glatter Übergang mit Interpolation
+
+        img.style.transform = `translateX(${newX}px)`;
+        img.dataset.currentX = newX; // Speichert den aktuellen Wert für die nächste Animation
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
   </script>
 
 </body>

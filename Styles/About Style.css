@@ -1,0 +1,120 @@
+    body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            margin: 0;
+        }
+        .table-container {
+            width: 100%;
+            max-width: 1200px; /* GEÄNDERT */
+            background: none;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: none;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* GEÄNDERT */
+        }
+        th, td {
+            border: 0px solid #ddd;
+            padding: 2vw; /* GEÄNDERT */
+            vertical-align: top;
+            color: white;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr {
+            height: 120px;
+        }
+        img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+        }
+        /* GEÄNDERT: Spaltenbreiten in Prozent */
+        td:nth-child(1) { width: 20%; }
+        td:nth-child(2) { width: 20%; }
+        td:nth-child(3) { width: 15%; }
+        td:nth-child(4) { width: 45%; }
+
+        @media (max-width: 1024px) {
+            body {
+                font-size: 14px;
+            }            
+            img {
+                max-width: 120px;
+            }
+            tr {
+                height: 80px;
+            }
+            td {
+                padding: 0.8vw; /* GEÄNDERT */
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                font-size: 18px;
+            }
+            img {
+                max-width: 120px;
+            }
+            th, td {
+                padding: 0.8vw; /* GEÄNDERT */
+            }
+            td {
+                font-size: 16px;
+            }
+            tr {
+                height: 40px;
+            }
+            /* Schriftgröße der vierten Spalte ändern */
+            td:nth-child(4) {
+                font-size: 13px;
+            }
+            /* GEÄNDERT: Spaltenbreiten in Prozent für 720px und kleiner */
+        td:nth-child(1) { width: 20%; }
+        td:nth-child(2) { width: 30%; }
+        td:nth-child(3) { width: 15%; }
+        td:nth-child(4) { width: 35%; }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            img {
+                max-width: 60px;
+            }
+            th, td {
+                padding: 0.4vw; /* GEÄNDERT */
+            }
+            td {
+                font-size: 11.5px;
+            }
+            tr {
+                height: 20px;
+            }
+        
+            /* Blendet die vierte Spalte aus und lässt die anderen den Platz nutzen */
+            th:nth-child(4), td:nth-child(4) {
+                display: none;
+            }
+        /* GEÄNDERT: Spaltenbreiten in Prozent */
+        td:nth-child(1) { width: 30%; }
+        td:nth-child(2) { width: 50%; }
+        td:nth-child(3) { width: 20%; }
+        
+        }
