@@ -4,247 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bluefield.Design | Contact</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon.png">
-<style>
-    body {
-    height: 120vh;
-    width: 100vw;
-    background-color: #4d4189;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    position: relative;
-    }
 
-    /* Header Anfang*/
-    /* Header Anfang*/
-    /* Header Anfang*/
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap" rel="stylesheet">
 
-    header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: space-between; /* Logo nach links, Nav nach rechts */
-    align-items: center;            /* vertikal zentrieren */
-    padding: 1rem 0 ;             /* oben/unten 1rem, links/rechts 50px */
-    z-index: 100;
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
-/* Logo links */
-.logo {
-    font-family: 'Moderustic', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin: 0; /* kein extra margin nötig, Abstand kommt vom Header-Padding */
-    margin-left: 50px;
-}
-
-/* Navigation rechts */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    margin-right: 50px;
-    padding: 0;
-}
-
-/* Standard-Link */
-nav ul li a {
-    position: relative;
-    text-decoration: none; /* verhindert Standard-Unterstreichung */
-    color: #ffffff7e;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-/* Animierte Linie unter dem Link */
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px; /* etwas Abstand unter dem Text */
-    width: 0;
-    height: 2px;
-    background-color: #ffffff;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-/* Hover-Effekt */
-nav ul li a:hover {
-    color: #ffffff;
-}
-
-nav ul li a:hover::after {
-    width: 100%;   /* volle Breite */
-    left: 0;       /* startet zentriert → wächst nach links & rechts */
-}
-
-    /* Header Ende*/
-    /* Header Ende*/
-    /* Header Ende*/
-
-    /* Footer Anfang*/
-    /* Footer Anfang*/
-    /* Footer Anfang*/
-
-        #footer {
-            position: absolute;
-            bottom: 0vh;
-            left: 0;
-            width: 100vw;
-            height: 21.5vh;
-            background-color: black;
-        }
-
-        /* Fußzeilen Container für alle Buttons */
-        .footer-button-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 360px;
-            position: absolute;
-            bottom: 9vh;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Fußzeile-Buttons */
-        .footer-button {
-            width: 80px;
-            height: 80px;
-            background-color: #000000;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            background-size: cover;
-        }
-
-        /* Hover-Effekt für Buttons */
-        .footer-button:hover {
-            transform: scale(1.1);
-        }
-
-        /* Footer-Text */
-        #footer-text {
-            position: absolute;
-            bottom: 1.9vh;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-size: 13.25px;
-            text-align: center;
-        }
-
-        .transparency-block-top {
-            position: absolute;
-            top: 0;
-            right: 0; /* Block links */
-            width: 100%; /* Breite des Blocks */
-            height: 1vh; /* Höhe des Blocks */
-            background: linear-gradient(to bottom, #00000050 0%, #00000000 100%); /* Verlauf von 100% zu 0% Transparenz in Hex */
-            z-index: 2; /* Höherer Z-Index als der Text */
-        }
-
-        .transparency-block-bottom {
-            position: absolute;
-            bottom: 21.5vh;
-            right: 0; /* Block links */
-            width: 100%; /* Breite des Blocks */
-            height: 1vh; /* Höhe des Blocks */
-            background: linear-gradient(to top, #00000050 0%, #00000000 100%); /* Verlauf von 100% zu 0% Transparenz in Hex */
-            z-index: 2; /* Höherer Z-Index als der Text */
-        }
-
-        @media (max-width: 1600px) {
-
-        .footer-button {
-            width: 60px;
-            height: 60px;
-            }
-
-        }
-
-        @media (max-width: 768px) {
-    
-        .footer-button {
-            width: 80px;
-            height: 80px;
-            }
-
-        }
-
-        @media (max-width: 480px) {
-
-        .footer-button {
-            width: 50px;
-            height: 50px;
-            }
-
-        }        
-
-        @media (max-width: 360px) {
-    
-        .footer-button-container {
-            max-width: 290px;
-            bottom: 10.5vh;
-            }
-
-        }  
-
-        @media (max-height: 480px) {
-
-        body {
-            height: 135vh;
-            }  
-
-        #footer {
-            position: absolute;
-            bottom: 0vh;
-            left: 0;
-            width: 100vw;
-            height: 35vh;
-            }
-            
-        .footer-button {
-            width: 45px;
-            height: 45px;
-            }
-   
-        .footer-button-container {
-            max-width: 200px;
-            bottom: 18vh;
-            }
-
-        }
-
-    /* Footer Ende*/
-    /* Footer Ende*/
-    /* Footer Ende*/
-
-</style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="Styles/Basic Style.css">
 </head>
-<body>
 
-<!-- Header mit Navigation -->
-<header>
+<body>
+  <!-- Header -->
+  <header>
     <div class="logo spaced-logo">BLUEFIELD DESIGN</div>
-    <style>
-        .spaced-logo {
-            letter-spacing: 2px; /* Erhöht den Buchstabenabstand */
-        }
-    </style>
-    <nav>
+    <!-- Burger Icon -->
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="nav">
       <ul>
         <li><a href="index.html" data-link="/Bluefield.Design/">Home</a></li>
         <li><a href="projects.html" data-link="/Bluefield.Design/projects">Projects</a></li>
@@ -254,58 +38,100 @@ nav ul li a:hover::after {
     </nav>
   </header>
 
-<!-- Footer -->
-
-<div id="footer"></div>
-<div class="footer-button-container">
-    <a href="https://www.behance.net/gabrielneufeld1" target="_blank">
-        <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/119c3c209122293.66fca748b78ec.png');"></button>
+  <!-- Footer -->
+  <div id="footer"></div>
+  <div class="footer-button-container">
+    <a href="https://www.behance.net/gabrielneufeld1" target="_blank" rel="noopener">
+      <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/119c3c209122293.66fca748b78ec.png');"></button>
     </a>
-
-    <a href="https://www.youtube.com/" target="_blank">
-        <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/258ea8209122293.66fca748b749f.png');"></button>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener">
+      <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/258ea8209122293.66fca748b749f.png');"></button>
     </a>
-
-    <a href="https://www.instagram.com/" target="_blank">
-        <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/864ee7209122293.66fca748b6fa0.png');"></button>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+      <button class="footer-button" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/864ee7209122293.66fca748b6fa0.png');"></button>
     </a>
-</div>
+  </div>
+  <div id="footer-text">© 2025 Gabriel Neufeld</div>
+  <div class="transparency-block-top"></div>
+  <div class="transparency-block-bottom"></div>
 
-<!-- Footer-Text -->
-<div id="footer-text">
-    © 2025 Gabriel Neufeld
-</div>
+  <!-- Scripts -->
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
 
-<!-- Blauer Block auf der linken Seite -->
-<div class="transparency-block-top "></div>
+    function setMenu(open) {
+      burger.classList.toggle('open', open);
+      nav.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
 
-    <!-- Blauer Block auf der linken Seite -->
-    <div class="transparency-block-bottom "></div>
+    // Burger-Button Klick
+    burger.addEventListener('click', () => {
+      const willOpen = !burger.classList.contains('open');
+      setMenu(willOpen);
+    });
 
-<script>
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', function (event) {
-        event.preventDefault(); // Verhindert normales Laden
-        const target = this.getAttribute('href');
-        const cleanURL = this.getAttribute('data-link');
-        
-        // Seite laden
-        fetch(target)
-          .then(res => res.text())
-          .then(html => {
-            document.open();
-            document.write(html);
-            document.close();
-            history.pushState(null, '', cleanURL);
-          });
+    // Menü schließen bei Linkklick (mobil)
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.matchMedia('(max-width: 720px)').matches) {
+          setMenu(false);
+        }
       });
     });
-  
-    // sorgt dafür, dass Zurück-Button funktioniert
-    window.addEventListener('popstate', () => {
-      location.reload();
+
+    // Menü schließen bei Klick außerhalb
+    document.addEventListener('click', (e) => {
+      if (window.matchMedia('(max-width: 720px)').matches) {
+        if (!nav.contains(e.target) && !burger.contains(e.target)) {
+          setMenu(false);
+        }
+      }
     });
-</script>
+
+    // Aktiven Menüpunkt markieren
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentPath = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll("nav a");
+
+      links.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href === currentPath || (href === "about.html" && currentPath === "")) {
+          link.classList.add("active");
+        }
+      });
+    });
     
+  // URL und Links ohne .html darstellen
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Saubere URL in Adressleiste anzeigen
+      if (window.location.pathname.endsWith(".html")) {
+        const cleanPath = window.location.pathname.replace(/about\.html$/, "")
+                                                 .replace(/\.html$/, "");
+        window.history.replaceState({}, "", cleanPath);
+      }
+
+      // 2. Links im Menü anpassen
+      document.querySelectorAll("nav a").forEach(link => {
+        let href = link.getAttribute("href");
+        if (href.endsWith(".html")) {
+          href = href.replace(/about\.html$/, "")
+                     .replace(/\.html$/, "");
+          link.setAttribute("href", href);
+        }
+      });
+
+      // 3. Aktiven Menüpunkt markieren
+      const currentPath = window.location.pathname.replace(/\/$/, "");
+      document.querySelectorAll("nav a").forEach(link => {
+        const href = link.getAttribute("href").replace(/\/$/, "");
+        if (href === currentPath) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
