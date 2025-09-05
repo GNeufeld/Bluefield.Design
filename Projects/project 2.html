@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bluefield.Design | Projects</title>
+<title>Bluefield.Design | Contact</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -13,14 +13,11 @@
   <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="Styles/Basic Style.css">
-  <link rel="stylesheet" href="Styles/Projects Style.css">
+  <link rel="stylesheet" href="Styles Projects/Basic Style Projects.css">
+  <!-- <link rel="stylesheet" href=""> -->
 </head>
 
 <body>
-  <!-- Background Color -->
-  <div class="background-container"> <!-- Background Color -->
-
   <!-- Header -->
   <header>
     <div class="logo spaced-logo">BLUEFIELD DESIGN</div>
@@ -43,55 +40,8 @@
   </header>
   <div class="transparency-block-top"></div>
 
-  <!-- Container mit 250px oben/unten und 10vw links/rechts -->
-  <div class="page-container">
-    <div class="button-grid" aria-label="Navigationsgrid">
-      <!-- Jede "card" ist ein Link zu einer weiteren HTML-Seite.
-           Ersetze href und src mit deinen Zielen und Bildern. -->
-      <a class="card" href="seite1.html" aria-label="Seite 1 - Projekt 1">
-        <img class="card__img" src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/be0818209122293.67d49af6d1fa4.png" alt="Projekt 1" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 1</h3>
-        </div>
-      </a>
-
-      <a class="card" href="Projects/project 2.html" aria-label="Seite 2 - Projekt 2">
-        <img class="card__img" src="https://mir-s3-cdn-cf.behance.net/project_modules/source/60c989209122293.67d498180c9b9.png" alt="Projekt 2" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 2</h3>
-        </div>
-      </a>
-
-      <a class="card" href="seite3.html" aria-label="Seite 3 - Projekt 3">
-        <img class="card__img" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/50d23b209122293.67d489889326f.png" alt="Projekt 3" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 3</h3>
-        </div>
-      </a>
-
-      <a class="card" href="seite4.html" aria-label="Seite 4 - Projekt 4">
-        <img class="card__img" src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/cb6bae209122293.67d4a9f85519f.png" alt="Projekt 4" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 4</h3>
-        </div>
-      </a>
-
-      <a class="card" href="seite5.html" aria-label="Seite 5 - Projekt 5">
-        <img class="card__img" src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/0a46e1209122293.67d4a4bd02471.png" alt="Projekt 5" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 5</h3>
-        </div>
-      </a>
-
-      <a class="card" href="seite6.html" aria-label="Seite 6 - Projekt 6">
-        <img class="card__img" src="https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/d39cb8209122293.67d4a9f8558a5.png" alt="Projekt 6" />
-        <div class="card__overlay">
-          <h3 class="card__title">Projekt 6</h3>
-        </div>
-      </a>
-    </div>
-  </div>
-
+  <!-- Hauptcontent -->  
+  
   <!-- Footer -->
   <div id="footer"></div>
   <div class="footer-button-container">
@@ -107,8 +57,6 @@
   </div>
   <div id="footer-text">© 2025 Gabriel Neufeld</div>
   <div class="transparency-block-bottom"></div>
-
-  </div> <!-- Background Color -->
 
   <!-- Scripts -->
   <script>
@@ -144,12 +92,12 @@
         }
       }
     });
-
+    
     // Einziger DOMContentLoaded-Block: URL bereinigen, Links umschreiben, aktiven Menüpunkt setzen
     document.addEventListener("DOMContentLoaded", () => {
       // Helper zum Normalisieren von Pfaden
       const normalize = (path) => path
-        .replace(/projects\.html$/i, "")
+        .replace(/about\.html$/i, "")
         .replace(/\.html$/i, "")
         .replace(/\/+$/,""); // Schluss-Slash entfernen
 

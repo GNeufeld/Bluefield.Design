@@ -1,13 +1,84 @@
+/* Body */
+body {
+  height: 1350px;
+  width: 100vw;
+  background-color: #000000;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+/* Laptop Bildschirm */
+@media (max-width: 1600px) { 
+  body { height: 1150px }
+}
+
+/* Tablett Groß Bildschirm */
+@media (max-width: 1024px) { 
+  body { height: 235vh }
+}
+
+/* Tablett Klein Bildschirm */
+@media (max-width: 768px) {  
+  body { height: 390vh }
+}
+
+/* Handy Hoch Bildschirm */
+@media (max-width: 480px) {  
+  body { height: 200vh}
+}
+
+/* Handy Quer Bildschirm*/
+@media (max-height: 480px) {  
+  body { height: 200vh }
+}
+    
+/* Background Color */
+.background-container {
+  min-height: 100%; /* komplette Bildschirmhöhe */
+  width: 100%; 
+  background-color: #4d4189; /* dein Hintergrund */
+  display: flex;
+  flex-direction: column; /* Inhalt untereinander */
+  justify-content: flex-start; /* Inhalt oben beginnen */
+  align-items: center; /* Inhalt horizontal zentrieren */
+  box-sizing: border-box;
+}
+
+/* Grundlayout - container hat 250px oben/unten und 10vw links/rechts */
+
 :root{
-  --gap: 40px;             /* Abstand zwischen Buttons */
-  --card-height: 400px;    /* Höhe der Buttons - anpassen falls gewuenscht */
+  --gap : 40px 40px;              /* Abstand zwischen Buttons */
+  --card-height: 450px;    /* Höhe der Buttons - anpassen falls gewuenscht */
   --radius: 12px;
   --accent: rgba(255,255,255,0.92);
 }
 
 /* Grundlayout - container hat 250px oben/unten und 10vw links/rechts */
 .page-container {
-  margin: 100px 10vw;
+  margin: 120px 10vw;
+}
+
+@media (max-width: 1600px) {
+  :root { --card-height: 350px; }
+  .page-container { margin: 120px 12vw; }
+}
+
+@media (max-width: 768px) {
+  :root { --card-height: 350px; 
+          --gap : 20px 20px;    }
+
+  .page-container { margin: 100px 10vw; }
+}
+
+@media (max-height: 480px) {
+  :root { --card-height: 250px; 
+          --gap : 25px 25px;    }
+
+  .page-container { margin: 100px 5vw; }
 }
 
 /* Grid mit 3 in einer Zeile und 40px Abstand */
@@ -132,12 +203,10 @@
 .button-grid .card:nth-child(6){ animation-delay: 0.36s; }
 
 /* Responsive: 2 Spalten bei kleineren Bildschirmen, 1 Spalte auf Handy */
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .button-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 600px) {
-  .page-container { margin: 120px 6vw; } /* weniger Marge auf sehr kleinen Screens */
+@media (max-width: 768px) {
   .button-grid { grid-template-columns: 1fr; }
-  .card { height: 200px; }
 }
