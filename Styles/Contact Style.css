@@ -1,7 +1,8 @@
+/* Body */
 body {
-  height: 120vh;
+  height: 1025px;
   width: 100vw;
-  background-color: #4d4189;
+  background-color: #000000;
   overflow-x: hidden;
   overflow-y: scroll;
   margin: 0;
@@ -10,15 +11,45 @@ body {
   position: relative;
 }
 
-@media (max-height: 480px) {
-  body { height: 150vh }
+/* Laptop Bildschirm */
+@media (max-width: 1600px) { 
+  body { height: 860px }
+}
+
+/* Tablett Groß Bildschirm */
+@media (max-width: 1024px) { 
+  body { height: 860px }
+}
+
+/* Tablett Klein Bildschirm */
+@media (max-width: 768px) {  
+  body { height: 1060px }
+}
+
+/* Handy Hoch Bildschirm */
+@media (max-width: 480px) {  
+  body { height: 1060px }
+}
+
+/* Handy Quer Bildschirm*/
+@media (max-height: 480px) {  
+  body { height: 860px }
+}
+    
+/* Background Color */
+.background-container {
+  min-height: 100%; /* komplette Bildschirmhöhe */
+  width: 100%; 
+  background-color: #4d4189; /* dein Hintergrund */
+  display: flex;
+  box-sizing: border-box;
 }
 
 /* Container für Bild und Text */
 .content-container {
     width: auto;
     height: 80vh;
-    top: 21vh;
+    top: 150px;
     background-color: transparent;
     position: relative;
     overflow: hidden;
